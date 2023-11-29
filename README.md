@@ -1,8 +1,5 @@
 Falta (formularios):
--Post desde cada una de las opciones (confirm, error, load,retrieve,cancel)
--Display de los Package Info
-
-
+-Post desde cada una de las opciones (error)
 
 
 

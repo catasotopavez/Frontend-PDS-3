@@ -25,7 +25,8 @@ const Dashboard = () => {
         if (response.data.length === 0) {
           setError("There aren't any locker stations.");
         } else {
-          setUsageData(response.data);
+          const sortedLockerStations = response.data.sort((a, b) => a.name.localeCompare(b.name));
+          setUsageData(sortedLockerStations);
         }
         setLoading(false);
       })
@@ -194,7 +195,7 @@ const Dashboard = () => {
                     </span>
 
                       </td>
-                    <td>{item.address}, {item.city}</td>
+                    <td>{item.address}</td>
                     <td>{item.num_lockers}</td>
                     <td>
                       {item.state === 'A' ? (

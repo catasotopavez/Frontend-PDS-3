@@ -26,8 +26,14 @@ const LockerStationInfo = () => {
         } else {
             const filteredData = response.data.filter(item => item.station === parseInt(id));
 
+            const sortedLockers = filteredData.sort((a, b) => {
+              const nameA = typeof a.nickname === 'string' ? a.nickname.toLowerCase() : a.nickname.toString();
+              const nameB = typeof b.nickname === 'string' ? b.nickname.toLowerCase() : b.nickname.toString();
+              return nameA.localeCompare(nameB);
+            });
+
             // console.log(filteredData);
-            setUsageData(filteredData);
+            setUsageData(sortedLockers);
 
             fetchHistoryData();
         }
@@ -44,10 +50,6 @@ const LockerStationInfo = () => {
   const fetchHistoryData = async () => {
     try {
       const reservationStates = await axios.get(api_url + "reservations/");
-      // const confirmedStates = await axios.get(api_url + "confirmed-states/");
-      // const loadedStates = await axios.get(api_url + "loaded-states/");
-      // const deliveredStates = await axios.get(api_url + "delivered-states/");
-      // const cancelledStates = await axios.get(api_url + "cancelled-states/");
 
       // Filter history data for the specific locker
       const filterHistoryData = (historyData) => {
@@ -55,21 +57,6 @@ const LockerStationInfo = () => {
       };
 
       const filteredReservationStates = filterHistoryData(reservationStates.data);
-      // const filteredConfirmedStates = filterHistoryData(confirmedStates.data);
-      // const filteredLoadedStates = filterHistoryData(loadedStates.data);
-      // const filteredDeliveredStates = filterHistoryData(deliveredStates.data);
-      // const filteredCancelledStates = filterHistoryData(cancelledStates.data);
-
-      // const combinedHistoryData = [
-      //   ...filteredConfirmedStates,
-      //   ...filteredLoadedStates,
-      //   ...filteredDeliveredStates,
-      //   ...filteredCancelledStates,
-      // ];
-      // console.log(combinedHistoryData);
-      // setHistoryData(combinedHistoryData);
-
-      // console.log(filteredReservationStates);
       setHistoryData(filteredReservationStates);
 
     } catch (error) {
@@ -202,7 +189,7 @@ const LockerStationInfo = () => {
                   </td>
 
                   <td style={{ color: item.is_open ? 'red' : 'black' }}>
-                    {item.is_empty ? 'Used' : 'Empty'}
+                    {item.is_empty ? 'Empty' : 'Used'}
                   </td>
 
 

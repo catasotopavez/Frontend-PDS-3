@@ -64,11 +64,7 @@ const LockerInfo = () => {
   const fetchHistoryData = async () => {
     try {
       const reservationStates = await axios.get(api_url + "reservations/");
-      // const confirmedStates = await axios.get(api_url + "confirmed-states/");
-      // const loadedStates = await axios.get(api_url + "loaded-states/");
-      // const deliveredStates = await axios.get(api_url + "delivered-states/");
-      // const cancelledStates = await axios.get(api_url + "cancelled-states/");
-
+      
       // Filter history data for the specific locker
       const filterHistoryData = (historyData) => {
         return historyData.filter(item => item.locker === parseInt(id_locker) && item.locker_station === parseInt(id_station));
@@ -214,7 +210,7 @@ const LockerInfo = () => {
                   </td>
 
                   <td style={{ color: item.is_open ? 'red' : 'black' }}>
-                    {item.is_empty ? 'Used' : 'Empty'}
+                    {item.is_empty ? 'Empty' : 'Used'}
                   </td>
 
                   <td>
@@ -282,16 +278,21 @@ const LockerInfo = () => {
                 <tr key={item.id}>
                   <td>{item.id}</td>
 
-                  <td> 
-                  {  ecommerceData.find(ecommerce => ecommerce.id === item.ecommerce) ? (
-                        // Find the ecommerce data based on the ecommerce_id
+                  <td>
+                    {item.ecommerce ? (
+                      ecommerceData.find(ecommerce => ecommerce.id === item.ecommerce) ? (
                         `${ecommerceData.find(ecommerce => ecommerce.id === item.ecommerce).name}`
                       ) : (
                         '--'
-                      )}
+                      )
+                    ) : (
+                      // Display item.e_commerce_name if item.ecommerce is null
+                      item.e_commerce_name || '--'
+                    )}
                   </td>
 
-                  <td style={{ color: item.state === 'cancelled' ? 'red' : (item.state === 'delivered' ? 'green' : 'inherit') }}>
+
+                  <td style={{ color: item.state === 'cancelled' ? 'red' : (item.state === 'completed' ? 'green' : 'inherit') }}>
                     {item.state || 'N/A'}
                   </td>
 

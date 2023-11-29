@@ -114,7 +114,9 @@ const Confirmation = () => {
       console.log('reservationId', { reservationData });
       setErrorMessage('');
   
-      // POST or navigate to the desired route
+      // POST or navigate to the desired route ------------------------------------------------
+
+
       navigate(`/errorconfirm/${reservationData.id}`);
 
     } catch (error) {
