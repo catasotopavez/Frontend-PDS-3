@@ -13,7 +13,7 @@ const Dashboard = () => {
   const [totalReservations, setTotalReservations] = useState(0);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [isMobile, setIsMobile] = useState(window.innerWidth <= 1200); 
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 1200); 
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 3;
   const navigate = useNavigate();
@@ -121,7 +121,7 @@ const Dashboard = () => {
 
   useEffect(() => {
     const handleResize = () => {
-      setIsMobile(window.innerWidth <= 1200); // Update isPC when the window is resized
+      setIsMobile(window.innerWidth < 1200); // Update isPC when the window is resized
     };
 
     window.addEventListener('resize', handleResize);

@@ -22,9 +22,9 @@ const Options = () => {
     navigate('/load');
   };
 
-  const handleConfirmation = () => {
-    navigate('/confirmation');
-  };
+  // const handleConfirmation = () => {
+  //   navigate('/confirmation');
+  // };
 
   const handleRetrieve = () => {
     navigate('/retrieve');
@@ -53,13 +53,51 @@ const Options = () => {
     
   };
 
+
+
+  if (location.pathname === "/confirmation"){
+    return(
+      <>
+        {!isPC && (
+        <div className='button-container-confirm'>
+          <button style={{ backgroundColor: getButtonColor('/load') }} onClick={handleLoad}>
+            Load
+          </button>
+          <button style={{ backgroundColor: getButtonColor('/retrieve') }} onClick={handleRetrieve}>
+            Retrieve
+          </button>
+          <button style={{ backgroundColor: getButtonColor('/cancel') }} onClick={handleCancel}>
+            Cancel
+          </button>
+        </div>
+      )}
+      {isPC && (
+        <div className='button-container-pc-confirm'>
+          <button style={{ backgroundColor: getButtonColor('/') }} onClick={handleHome}>
+            Home
+          </button>
+          <button style={{ backgroundColor: getButtonColor('/load') }} onClick={handleLoad}>
+            Load
+          </button>
+          <button style={{ backgroundColor: getButtonColor('/retrieve') }} onClick={handleRetrieve}>
+            Retrieve
+          </button>
+          <button style={{ backgroundColor: getButtonColor('/cancel') }} onClick={handleCancel}>
+            Cancel
+          </button>
+        </div>
+      )}
+    </>
+    );
+}
+else{
   return (
     <>
       {!isPC && (
         <div className='button-container'>
-          <button style={{ backgroundColor: getButtonColor('/confirmation') }} onClick={handleConfirmation}>
+          {/* <button style={{ backgroundColor: getButtonColor('/confirmation') }} onClick={handleConfirmation}>
             Confirmation
-          </button>
+          </button> */}
           <button style={{ backgroundColor: getButtonColor('/load') }} onClick={handleLoad}>
             Load
           </button>
@@ -76,10 +114,10 @@ const Options = () => {
           <button style={{ backgroundColor: getButtonColor('/') }} onClick={handleHome}>
             Home
           </button>
-
-          <button style={{ backgroundColor: getButtonColor('/confirmation') }} onClick={handleConfirmation}>
+  
+          {/* <button style={{ backgroundColor: getButtonColor('/confirmation') }} onClick={handleConfirmation}>
             Confirmation
-          </button>
+          </button> */}
           <button style={{ backgroundColor: getButtonColor('/load') }} onClick={handleLoad}>
             Load
           </button>
@@ -93,6 +131,8 @@ const Options = () => {
       )}
     </>
   );
+}
+
 };
 
 export default Options;

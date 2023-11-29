@@ -26,3 +26,30 @@
     background-color: #ffc889;
   }
   
+
+  .button-style-bit {
+    display: block;
+    margin: 0 auto;
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    background-color: #2ebf87;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  .button-style-bit:hover{
+    background-color: #2ddb98;
+  }
+  
+  .button-container-home {
+    display: flex;
+    gap: 10px;
+    flex-grow: 1;
+    margin-top: 5px;
+    justify-content: center; 
+    align-items: center; /* Center the elements vertically */
+  }

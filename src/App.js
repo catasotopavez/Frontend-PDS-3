@@ -15,6 +15,8 @@ import './App.css';
 import Dashboard from './components/Dashboard/Dashboard';
 import LockerStationInfo from './components/Dashboard/LockerStationInfo';
 import LockerInfo from './components/Dashboard/LockerInfo';
+import Bitacora from './components/Bitacora/Bitacora';
+import BitacoraShow from './components/Bitacora/BitacoraShow';
 
 const App = () => {
   return (
@@ -37,6 +39,8 @@ const App = () => {
               <Route path="/dashboard" element={<Dashboard />} />
               <Route path="/locker-station/:id" element={<LockerStationInfo />} />
               <Route path="/locker-station/:id_station/locker/:id_locker" element={<LockerInfo />} />
+              <Route path="/bitacora" element={<Bitacora />} />
+              <Route path="/bitacora/locker-station/:id_station/locker/:id_locker" element={<BitacoraShow />} />
 
               <Route path="*" element={<Navigate to="/" />} />
             </Routes>

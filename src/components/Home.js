@@ -9,6 +9,9 @@ const Home = () => {
   const handleDash = () => {
     navigate('/dashboard');
   };
+  const handleBitacora = () => {
+    navigate('/bitacora');
+  };
 
   useEffect(() => {
     const handleResize = () => {
@@ -37,9 +40,16 @@ const Home = () => {
           (only on pc)
           </div>
 
-          <button onClick={handleDash} className="button-style-dash">
-            Dashboard
-          </button>
+          <div className='button-container-home'>
+            <button onClick={handleDash} className="button-style-dash">
+              Dashboard
+            </button>
+
+            <button onClick={handleBitacora} className="button-style-bit">
+              Bitacora
+            </button>
+          </div>
+
         </>
       )}
     </>

@@ -16,7 +16,7 @@ const LockerInfo = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   
-  const [isMobile, setIsMobile] = useState(window.innerWidth <= 1200); 
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 1200); 
 
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 3;
@@ -75,21 +75,6 @@ const LockerInfo = () => {
       };
 
       const filteredReservationStates = filterHistoryData(reservationStates.data);
-      // const filteredConfirmedStates = filterHistoryData(confirmedStates.data);
-      // const filteredLoadedStates = filterHistoryData(loadedStates.data);
-      // const filteredDeliveredStates = filterHistoryData(deliveredStates.data);
-      // const filteredCancelledStates = filterHistoryData(cancelledStates.data);
-
-      // const combinedHistoryData = [
-      //   ...filteredConfirmedStates,
-      //   ...filteredLoadedStates,
-      //   ...filteredDeliveredStates,
-      //   ...filteredCancelledStates,
-      // ];
-      // console.log(combinedHistoryData);
-      // setHistoryData(combinedHistoryData);
-
-      // console.log(filteredReservationStates);
       setHistoryData(filteredReservationStates);
 
     } catch (error) {
@@ -118,7 +103,7 @@ const LockerInfo = () => {
 
   useEffect(() => {
     const handleResize = () => {
-      setIsMobile(window.innerWidth <= 1200); // Update isPC when the window is resized
+      setIsMobile(window.innerWidth < 1200); // Update isPC when the window is resized
     };
 
     window.addEventListener('resize', handleResize);
@@ -241,7 +226,7 @@ const LockerInfo = () => {
                         new Date(item.reservation_date).getTime() >=
                           new Date().getTime() + 5 * 24 * 60 * 60 * 1000
                     ) ? (
-                      <span style={{ color: 'red' }}>● (Yes)</span>
+                      <span style={{ color: 'red' }}>● (Expired)</span>
                     ) : (
                       <span style={{ color: 'green' }}>● (No)</span>
                     )}
@@ -256,7 +241,7 @@ const LockerInfo = () => {
                         new Date(item.reservation_date).getTime() >=
                           new Date().getTime() + 5 * 24 * 60 * 60 * 1000
                     ) ? (
-                      <span style={{ color: 'red' }}>● (Yes)</span>
+                      <span style={{ color: 'red' }}>● (Expired)</span>
                     ) : (
                       <span style={{ color: 'green' }}>● (No)</span>
                     )}
@@ -347,7 +332,7 @@ const LockerInfo = () => {
               ))
             )  : (
               <tr style={{ backgroundColor: '#F5C6FD' , color: 'black' }}>
-                <td colSpan="9"> No data available</td>
+                <td colSpan="10"> No data available</td>
               </tr>
             )}
            

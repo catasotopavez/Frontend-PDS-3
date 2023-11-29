@@ -46,6 +46,14 @@
   align-items: center; /* Center the elements vertically */
 }
 
+.button-container-confirm {
+  display: none;
+}
+
+.button-container-pc-confirm {
+  display: none;
+}
+
 .center-button{
   display: flex;
   justify-content: center; 
