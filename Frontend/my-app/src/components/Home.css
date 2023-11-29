@@ -1,0 +1,28 @@
+/* Home.css */
+
+.text-style {
+    font-size: 1rem;
+    font-weight: bold;
+    text-align: center;
+    padding: 20px;
+    color: #333;
+  }
+  
+  .button-style-dash {
+    display: block;
+    margin: 0 auto;
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    background-color: #f8a13e;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  .button-style-dash:hover{
+    background-color: #ffc889;
+  }
+  
