@@ -115,7 +115,15 @@ const Confirmation = () => {
       setErrorMessage('');
   
       // POST or navigate to the desired route ------------------------------------------------
-
+        // POST or navigate to the desired route
+      try {
+        const response = await axios.post(api_url + 'canceled-reservation/', {
+          reservation_code: code,
+        });
+        console.log(response.data);  
+      } catch (error) {
+        console.error("Error en la solicitud:", error);
+      }
 
       navigate(`/errorconfirm/${reservationData.id}`);
 

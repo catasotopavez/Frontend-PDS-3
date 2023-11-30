@@ -66,9 +66,6 @@ const Options = () => {
           <button style={{ backgroundColor: getButtonColor('/retrieve') }} onClick={handleRetrieve}>
             Retrieve
           </button>
-          <button style={{ backgroundColor: getButtonColor('/cancel') }} onClick={handleCancel}>
-            Cancel
-          </button>
         </div>
       )}
       {isPC && (
@@ -103,9 +100,6 @@ else{
           </button>
           <button style={{ backgroundColor: getButtonColor('/retrieve') }} onClick={handleRetrieve}>
             Retrieve
-          </button>
-          <button style={{ backgroundColor: getButtonColor('/cancel') }} onClick={handleCancel}>
-            Cancel
           </button>
         </div>
       )}
